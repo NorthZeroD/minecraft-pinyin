@@ -1,11 +1,9 @@
 import json
 import os
-from pypinyin import pinyin, lazy_pinyin, Style
-from ojson import Json
-from pypinyin_dict.phrase_pinyin_data import cc_cedict
+from pypinyin import lazy_pinyin, Style
+from Json import Json
 
 def main() -> None:
-    cc_cedict.load()
 
     with open('download/zh_cn.json', 'r', encoding='utf-8') as f:
         lang_json = json.load(f)
@@ -18,7 +16,7 @@ def main() -> None:
         if k in ignore_keys.data()['ignore_keys']:
             continue
         try:
-            pinyin_list = lazy_pinyin(v, style=Style.TONE3, neutral_tone_with_five=True, errors='exception')
+            pinyin_list = lazy_pinyin(v, style=Style.FIRST_LETTER, neutral_tone_with_five=True, errors='exception')
             pinyin_str = ''.join(pinyin_list)
             lang_json[k] = f"{v} | {pinyin_str}"
         except Exception as e:

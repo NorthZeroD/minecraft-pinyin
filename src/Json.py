@@ -1,11 +1,18 @@
 import json
 import os
+from functools import singledispatch
+
 
 class Json:    
     _content: dict
 
+    @singledispatch
     def __init__(self, content: dict) -> None:
         self._content = content
+
+    @__init__.register
+    def _(self, content: str) -> None:
+        self._content = json.loads(content)
 
     def load(self, file_path: str) -> None:
         with open(file_path, 'r', encoding='utf-8') as f:

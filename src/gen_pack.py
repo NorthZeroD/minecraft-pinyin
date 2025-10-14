@@ -1,6 +1,6 @@
 import shutil
 import os
-from ojson import Json
+from Json import Json
 
 pack_meta = {
   "pack": {

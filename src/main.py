@@ -1,5 +1,7 @@
 from download import *
 from utils import *
+from gen_pinyin import main as gen_pinyin_main
+from gen_pack import main as gen_pack_main
 
 def main() -> None:
     version_manifest = get_version_manifest()
@@ -18,6 +20,9 @@ def main() -> None:
     if lang_json is None:
         print("Failed to get language JSON.")
         return
+
+    gen_pinyin_main()
+    gen_pack_main()
 
 if __name__ == "__main__":
     main()

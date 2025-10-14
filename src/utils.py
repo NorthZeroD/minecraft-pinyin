@@ -1,11 +1,12 @@
 import requests
-from objects.json import Json
+import json
+from ojson import Json
 
 def get_json_file(file_name: str, url: str) -> int:
     response = requests.get(url)
     if response.status_code == 200:
-        json = Json(response.text)
-        json.save_formatted(f'download/{file_name}')
+        data = Json(json.loads(response.text))
+        data.save_formatted(f'download/{file_name}')
         return 200
     return response.status_code
 

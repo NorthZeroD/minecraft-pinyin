@@ -1,18 +1,24 @@
 from Downloader import *
-from gen_pinyin import main as gen_pinyin_main
-from gen_pack import main as gen_pack_main
+from PinyinGenerator import *
+from PackGenerator import *
 
 def main() -> None:
-    downloader = Downloader('download/')
-    downloader.get_version_manifest_json()
-    print(downloader._version_manifest_json['latest'])
-    downloader.select_version(input("Enter the Minecraft version: "))
-    downloader.get_version_json()
-    downloader.get_asset_index_json()
-    downloader.get_lang_json()
-
-    gen_pinyin_main()
-    gen_pack_main()
+    try:
+        downloader = Downloader('download')
+        downloader.get_version_manifest_json()
+        print(downloader._version_manifest_json['latest'])
+        downloader.select_version(input("Enter the Minecraft version: "))
+        downloader.get_version_json()
+        downloader.get_asset_index_json()
+        downloader.get_lang_json()
+        
+        pinyin_generator = PinyinGenerator(downloader._lang_json, 'output')
+        pinyin_generator.run()
+        
+        pack_generator = PackGenerator('output')
+        pack_generator.run()
+    except Exception as e:
+        print(f"Error occurred: {e}")
 
 if __name__ == "__main__":
     main()

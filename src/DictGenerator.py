@@ -50,5 +50,3 @@ if __name__ == '__main__':
 
     dict_generator = DictGenerator(lang_json, 'output')
     dict_generator.run()
-
-    print('Generated and saved output/zh_cn_dict.json')

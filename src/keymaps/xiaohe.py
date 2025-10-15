@@ -68,7 +68,7 @@ end_yunmu: dict[str, str] = {
 # 从长到短排序，确保优先匹配长的
 end_yunmu_sorted: list[str] = sorted(end_yunmu, key=lambda x: -len(x))
 
-def to_xiaohe(s: str) -> str:
+def to_xh(s: str) -> str:
     # 如果这个拼音只有韵母，则返回 only_yunmu 中的对应值
     for k in only_yunmu_sorted:
         if s == k:

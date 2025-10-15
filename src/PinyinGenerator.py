@@ -1,8 +1,9 @@
 import os
 import json
-from pypinyin import lazy_pinyin
+from pypinyin import lazy_pinyin, load_phrases_dict
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
 from Formatter import *
+from phrases_dict import phrases_dict
 
 class PinyinGenerator:
     _formatter: Formatter
@@ -18,8 +19,14 @@ class PinyinGenerator:
 
     def run(self) -> None:
         cc_cedict.load()
+        load_phrases_dict(phrases_dict)
+
         for k, v in self._lang_json.items():
-            if not k.startswith('item.minecraft.') and not k.startswith('block.minecraft.'):
+            if (not k.startswith('item.minecraft.')
+                and not k.startswith('block.minecraft.')
+                and not k.startswith('effect.minecraft.')
+                and not k.startswith('enchantment.minecraft.')
+            ):
                 continue
             try:
                 pinyin_list = lazy_pinyin(v, errors='exception')
@@ -32,7 +39,7 @@ class PinyinGenerator:
             except Exception as e:
                 print(f'{e}. Ignore "{k}": "{v}"')
 
-        with open(f'{self._output_dir}/zh_py.json', 'w', encoding='utf-8') as f:
+        with open(f'{self._output_dir}/zh_cn.json', 'w', encoding='utf-8') as f:
             json.dump(self._lang_json, f, ensure_ascii=False, indent=2)
 
-        print(f'Generated and saved {self._output_dir}/zh_py.json')
+        print(f'Generated and saved {self._output_dir}/zh_cn.json')

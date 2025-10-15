@@ -17,8 +17,8 @@ class PackGenerator:
             json.dump(pack_meta, f, ensure_ascii=False, indent=2)
 
         shutil.copy(
-            f'{self._output_dir}/zh_py.json',
-            f'{self._output_dir}/Pinyin_Resource_Pack/assets/minecraft/lang/zh_py.json'
+            f'{self._output_dir}/zh_cn.json',
+            f'{self._output_dir}/Pinyin_Resource_Pack/assets/minecraft/lang/zh_cn.json'
         )
         shutil.make_archive(
             f'{self._output_dir}/Pinyin_Resource_Pack',

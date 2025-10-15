@@ -1,12 +1,6 @@
 pack_meta = {
   "pack": {
-    "description": "Pinyin Resource Pack\ngithub.com/NorthZeroD/minecraft-pinyin-resourcepack",
+    "description": "Pinyin Resource Pack\nNorthZeroD/minecraft-pinyin",
     "pack_format": 99,
-  },
-  "language": {
-    "zh_py": {
-      "name": "中文",
-      "region": "拼音",
-    },
   }
 }

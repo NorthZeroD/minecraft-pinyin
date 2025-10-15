@@ -1,9 +1,27 @@
-zhchsh = {
+zhchsh: dict[str, str] = {
     'zh': 'v',
     'ch': 'i',
     'sh': 'u',
 }
-xiaohe_keymap = {
+
+only_yunmu: dict[str, str] = {
+    'ang': 'ah',
+    'eng': 'eg',
+    'an': 'an',
+    'en': 'en',
+    'ai': 'ai',
+    'ei': 'ei',
+    'ao': 'ao',
+    'ou': 'ou',
+    'er': 'er',
+    'a': 'aa',
+    'e': 'ee',
+    'o': 'oo',
+}
+# 从长到短排序，确保优先匹配长的
+only_yunmu_sorted: list[str] = sorted(only_yunmu, key=lambda x: -len(x))
+
+end_yunmu: dict[str, str] = {
     'iang': 'l',
     'uang': 'l',
     'ang': 'h',
@@ -31,6 +49,7 @@ xiaohe_keymap = {
     'iong': 's',
     'ong': 's',
     
+    'iao': 'n',
     'ao': 'c',
     'uo': 'o',
     
@@ -47,17 +66,18 @@ xiaohe_keymap = {
     'u': 'u',
 }
 # 从长到短排序，确保优先匹配长的
-xiaohe_keymap_sorted = sorted(xiaohe_keymap, key=lambda x: -len(x))
+end_yunmu_sorted: list[str] = sorted(end_yunmu, key=lambda x: -len(x))
 
 def to_xiaohe(s: str) -> str:
-    # 只有一个单韵母，那么就双写
-    if len(s) == 1:
-        return s * 2
+    # 如果这个拼音只有韵母，则返回 only_yunmu 中的对应值
+    for k in only_yunmu_sorted:
+        if s == k:
+            return only_yunmu[k]
 
     # 从长到短匹配韵母
-    for k in xiaohe_keymap_sorted:
+    for k in end_yunmu_sorted:
         if s.find(k) != -1:
-            s = s.replace(k, xiaohe_keymap[k])
+            s = s.replace(k, end_yunmu[k])
             break
 
     # 处理 zh ch sh

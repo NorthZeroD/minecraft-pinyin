@@ -1,2 +1,8 @@
-rm -r download
-rm -r output
+#!/bin/bash
+
+if [ -d "download" ]; then
+    rm -r download
+fi
+if [ -d "output" ]; then
+    rm -r output
+fi

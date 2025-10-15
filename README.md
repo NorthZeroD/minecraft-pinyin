@@ -24,13 +24,13 @@ chmod +x script/run.sh && ./script/run.sh
 
 1. 克隆项目并切换到项目根目录
 
-如果使用**PowerShell 5**:
+如果使用 **PowerShell 5**:
 
 ```bash
 git clone https://github.com/NorthZeroD/minecraft-pinyin.git ; cd minecraft-pinyin
 ```
 
-如果使用**CMD**或**PowerShell 7**:
+如果使用 **CMD** 或 **PowerShell 7**:
 
 ```bash
 git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pinyin
@@ -38,13 +38,13 @@ git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pin
 
 2. 执行脚本
 
-如果使用**Powershell**:
+如果使用 **Powershell**:
 
 ```bash
 .\script\run.bat
 ```
 
-如果使用**CMD**:
+如果使用 **CMD**:
 
 ```bash
 script\run.bat
@@ -56,7 +56,7 @@ script\run.bat
 
 ### Linux
 
-更改脚本权限并执行
+更改脚本权限并执行:
 
 ```bash
 chmod +x script/dict.sh && ./script/dict.sh
@@ -64,15 +64,15 @@ chmod +x script/dict.sh && ./script/dict.sh
 
 ### Windows
 
-执行脚本
+执行脚本。
 
-如果使用**Powershell**:
+如果使用 **Powershell**:
 
 ```bash
 .\script\dict.bat
 ```
 
-如果使用**CMD**:
+如果使用 **CMD**:
 
 ```bash
 script\dict.bat

@@ -1,13 +1,12 @@
-def func1():
-    from pypinyin import pinyin
-    print(pinyin('枯萎'))
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from keymap.xiaohe import *
 
-def func2():
-    from pypinyin import pinyin
-    from pypinyin_dict.phrase_pinyin_data import cc_cedict
-    cc_cedict.load()
-    print(pinyin('枯萎'))
+def main():
+    print(to_xiaohe('shi'))
 
 if __name__ == '__main__':
-    func1()
-    func2()
+    main()
+
+# shi -> v

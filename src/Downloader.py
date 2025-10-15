@@ -21,9 +21,9 @@ class Downloader:
             data = json.loads(response.text)
             with open(f'{self._download_dir}/{file_name}', 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
-            print(f"Downloaded and saved {self._download_dir}/{file_name}")
+            print(f'Downloaded and saved {self._download_dir}/{file_name}')
             return data
-        raise Exception(f"Failed to download {file_name}, status code: {response.status_code}")
+        raise Exception(f'Failed to download {file_name}, status code: {response.status_code}')
 
     def get_version_manifest_json(self) -> None:
         try:
@@ -37,7 +37,7 @@ class Downloader:
             if v['id'] == selected_version:
                 self._version_json_url = v['url']
                 return
-        raise Exception("Version not found: " + selected_version)
+        raise Exception('Version not found: ' + selected_version)
 
     def get_version_json(self) -> None:
         try:

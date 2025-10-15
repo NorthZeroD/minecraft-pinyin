@@ -5,7 +5,7 @@ from pack_meta import *
 class PackGenerator:
     _output_dir: str = 'output'
 
-    def __init__(self, output_dir: str = 'output') -> None:
+    def __init__(self, output_dir: str) -> None:
         self._output_dir = output_dir
         if not os.path.exists(self._output_dir):
             os.makedirs(self._output_dir)

@@ -2,6 +2,10 @@
 
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**，支持全拼、各种双拼和首字母！
 
+![物品搜索](./screenshot/pic1.png)
+![词库](./screenshot/pic2.png)
+![输入法展示](./screenshot/pic3.png)
+
 [使用 - 生成资源包](#使用---生成资源包)
 
 [使用 - 生成Rime词库](使用---生成Rime词库)

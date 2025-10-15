@@ -24,6 +24,7 @@ class DictGenerator:
                 and not k.startswith('block.minecraft.')
                 and not k.startswith('effect.minecraft.')
                 and not k.startswith('enchantment.minecraft.')
+                and not k.startswith('entity.minecraft.')
             ):
                 continue
             try:

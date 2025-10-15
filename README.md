@@ -2,6 +2,25 @@
 
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**，支持全拼、各种双拼和首字母！
 
+[使用 - 生成资源包](#使用---生成资源包)
+
+[使用 - 生成Rime词库](使用---生成Rime词库)
+
+当前支持的资源包拼音方案:
+
+- [x] 首字母
+- [x] 全拼
+- [x] 小鹤双拼
+- [ ] 自然码
+- [ ] 搜狗双拼
+- [ ] 微软双拼
+- [ ] 紫光双拼
+- [ ] 国标双拼
+- [ ] 拼音加加
+- [ ] 智能ABC
+
+*持续更新中...*
+
 ## 使用 - 生成资源包
 
 **请确保你的操作系统上已安装 git 和 python，然后再进行下一步。**
@@ -11,7 +30,7 @@
 1. 克隆项目并切换到项目根目录
 
 ```bash
-git clone https://github.com/NorthZeroD/minecraft-pinyin.git ; cd minecraft-pinyin
+git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pinyin
 ```
 
 2. 更改脚本权限并执行

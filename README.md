@@ -6,9 +6,7 @@
 ![词库](./screenshot/pic2.webp)
 ![输入法展示](./screenshot/pic3.webp)
 
-[使用 - 生成资源包](#使用---生成资源包)
-
-[使用 - 生成Rime词库](使用---生成Rime词库)
+[使用](#使用)
 
 当前支持的资源包拼音方案:
 
@@ -25,7 +23,7 @@
 
 *持续更新中...*
 
-## 使用 - 生成资源包
+## 使用
 
 **请确保你的操作系统上已安装 git 和 python，然后再进行下一步。**
 
@@ -71,32 +69,4 @@ git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pin
 
 ```bash
 script\run.bat
-```
-
-## 使用 - 生成Rime词库
-
-请先[生成资源包](#使用---生成资源包)，然后进行下一步。
-
-### Linux
-
-更改脚本权限并执行:
-
-```bash
-chmod +x script/dict.sh && ./script/dict.sh
-```
-
-### Windows
-
-执行脚本。
-
-如果使用 **Powershell**:
-
-```bash
-.\script\dict.bat
-```
-
-如果使用 **CMD**:
-
-```bash
-script\dict.bat
 ```

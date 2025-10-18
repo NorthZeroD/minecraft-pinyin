@@ -1,34 +1,39 @@
 import shutil
+import json
 import os
-from pack_meta import *
+from pack_meta import pack_meta
 
 class PackGenerator:
-    _output_dir: str = 'output'
-    _minecraft_version: str = 'Unknown'
-    _pinyin_scheme: str = 'Unknown'
+    output_dir: str
+    base_resourcepack_name: str
+    base_lang_json_name: str
 
-    def __init__(self, output_dir: str, minecraft_version: str, pinyin_scheme: str) -> None:
-        self._output_dir = output_dir
-        self._minecraft_version = minecraft_version
-        self._pinyin_scheme = pinyin_scheme
-        if not os.path.exists(self._output_dir):
-            os.makedirs(self._output_dir)
+    def __init__(self,
+        output_dir: str,
+        base_resourcepack_name: str,
+        base_lang_json_name: str
+    ) -> None:
+        self.output_dir = output_dir
+        self.base_resourcepack_name = base_resourcepack_name
+        self.base_lang_json_name = base_lang_json_name
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
 
     def run(self) -> None:
-        rp_name = f'Pinyin_Resource_Pack_{self._minecraft_version}_{self._pinyin_scheme}'
-
-        os.makedirs(f'{self._output_dir}/{rp_name}/assets/minecraft/lang', exist_ok=True)
-        with open(f'{self._output_dir}/{rp_name}/pack.mcmeta', 'w', encoding='utf-8') as f:
-            import json
+        output_rp = f'{self.output_dir}/{self.base_resourcepack_name}'
+        
+        os.makedirs(f'{output_rp}/assets/minecraft/lang', exist_ok=True)
+        
+        with open(f'{output_rp}/pack.mcmeta', 'w', encoding='utf-8') as f:
             json.dump(pack_meta, f, ensure_ascii=False, indent=2)
 
         shutil.copy(
-            f'{self._output_dir}/zh_cn.json',
-            f'{self._output_dir}/{rp_name}/assets/minecraft/lang/zh_cn.json'
+            f'{self.output_dir}/{self.base_lang_json_name}.json',
+            f'{output_rp}/assets/minecraft/lang/zh_cn.json'
         )
         shutil.make_archive(
-            f'{self._output_dir}/{rp_name}',
+            output_rp,
             'zip',
-            f'{self._output_dir}/{rp_name}'
+            output_rp
         )
-        print(f'Generated and saved {self._output_dir}/{rp_name}.zip')
+        print(f'Generated and saved {output_rp}.zip')

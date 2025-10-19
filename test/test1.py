@@ -1,28 +1,10 @@
-class A:
-    _field: int
-    
-    def run(self) -> None:
-        self._field = 5
-        print(self._field)
-
-class B:
-    _field: int
-    
-    def __init__(self, value: int) -> None:
-        self._field = value
-    
-    def run(self) -> None:
-        self._field = 10
-        print(self._field)
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from pycantonese import characters_to_jyutping
 
 def main() -> None:
-    a = A()
-    a.run()
-    
-    b = B(3)
-    b.run()
-    print(b._field)
-    print(a._field)
+    print(characters_to_jyutping('閃長巖'))
 
 if __name__ == '__main__':
     main()

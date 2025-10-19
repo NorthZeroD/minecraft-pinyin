@@ -6,6 +6,9 @@ schemes = '''
 4. 搜狗双拼
 5. 微软双拼
 6. 紫光双拼
+7. 智能ABC
+8. 国标双拼
+9. 拼音加加
 '''
 
 scheme_codes = [
@@ -16,9 +19,10 @@ scheme_codes = [
     'sg',
     'wr',
     'zg',
+    'abc',
     'gb',
     'jj',
-    'abc',
+    'Unknow',
 ]
 
 def to_szm(s: str) -> str:
@@ -30,8 +34,8 @@ def to_qp(s: str) -> str:
 from typing import Callable
 
 class Formatter:
-    pinyin_scheme_number: str = 'Unknow'
-    pinyin_scheme_code: str = 'Unknow'
+    pinyin_scheme_number: str
+    pinyin_scheme_code: str
 
     def __init__(self, pinyin_scheme_number: str) -> None:
         self.pinyin_scheme_number = pinyin_scheme_number
@@ -58,6 +62,15 @@ class Formatter:
         elif self.pinyin_scheme_number == '6':
             from keymaps.zg import to_zg
             to_pinyin_scheme = to_zg
+        elif self.pinyin_scheme_number == '7':
+            from keymaps.abc import to_abc
+            to_pinyin_scheme = to_abc
+        elif self.pinyin_scheme_number == '8':
+            from keymaps.gb import to_gb
+            to_pinyin_scheme = to_gb
+        elif self.pinyin_scheme_number == '9':
+            from keymaps.jj import to_jj
+            to_pinyin_scheme = to_jj
         else:
             raise ValueError(f'Unknown format: {self.pinyin_scheme_number}')
         return to_pinyin_scheme

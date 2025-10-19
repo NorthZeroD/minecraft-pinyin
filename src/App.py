@@ -69,7 +69,7 @@ class App:
                 self.minecraft_version,
             )
             dict_generator.run()
+
+            print(f'Done! Check the "{self.output_dir}" folder!')
         except Exception as e:
             print(f'Error occurred: {e}')
-        
-        print(f'Done! Check the "{self.output_dir}" folder!')

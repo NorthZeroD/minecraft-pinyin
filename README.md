@@ -2,6 +2,7 @@
 
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**，支持全拼、各种双拼和首字母！
 
+![资源包列表展示](./.screenshot/pic4.webp)
 ![物品搜索](./.screenshot/pic1.webp)
 ![词库](./.screenshot/pic2.webp)
 ![输入法展示](./.screenshot/pic3.webp)
@@ -20,7 +21,7 @@
 - [X] 智能ABC
 - [ ] 粤拼(港繁)
 
-*持续更新中...*
+*积极维护中...*
 
 ## 使用
 

@@ -17,6 +17,10 @@ question = """
 
 
 def main() -> None:
+    print(
+        "欢迎使用 Minecraft Pinyin 生成器！\nhttps://github.com/NorthZeroD/minecraft-pinyin"
+    )
+
     a = input(question)
     if a == "4":
         return

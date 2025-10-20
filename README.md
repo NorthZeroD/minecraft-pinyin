@@ -78,20 +78,25 @@ script\run.bat
 ## 脚本交互
 
 ```text
+欢迎使用 Minecraft Pinyin 生成器！
+https://github.com/NorthZeroD/minecraft-pinyin
+
 你想做什么?
 1. 生成资源包和Rime词库 (默认)
 2. 生成资源包
 3. 生成Rime词库
 4. 退出
 
-你的选择: 2
-命中缓存: download/version_manifest.json
-{'release': '1.21.10', 'snapshot': '25w42a'}
-输入一个MC版本号: 1.21.10
-命中缓存: download/version_manifest.json
-命中缓存: download/1.21.10/1.21.10.json
-命中缓存: download/1.21.10/27.json
-命中缓存: download/1.21.10/zh_cn.json
+* 直接回车以选择默认项
+[用户输入] 你的选择: 
+... ...
+1.21.10         25w42a
+1.21.9          25w41a
+1.21.8          1.21.10-rc1
+1.21.7          1.21.9-rc1
+1.21.6          1.21.9-pre4
+[用户输入] 输入一个MC版本号 (25w42a): 
+... ...
 
 有以下可用格式代码:
 
@@ -112,9 +117,17 @@ none    无
 例如 'src | szm' 你将最终得到 '草方块 | cfk' 的效果。
 例如 'qp | none' 你将最终得到 'caofangkuai' 的效果。
 
-'XXX | ...' 现在输入左侧内容: src
-'src | XXX' 现在输入右侧内容: xh
+[用户输入] 'XXX | ...' 现在输入左侧内容: src
+[用户输入] 'src | XXX' 现在输入右侧内容: xh
 
 你已选定格式: '原文 | 小鹤双拼'
 (Y)是的，继续 (n)不对，重选
+[用户输入] 你的选择: 
+... ...
+[资源包] 开始生成资源包...
+[资源包] 已生成资源包并保存到 output/25w42a/Pinyin_Resource_Pack_25w42a_src_xh.zip
+... ...
+[词库] 开始生成Rime词库...
+[词库] 已生成词库并保存到 output/minecraft.dict.yaml
+[结束] 任务已完成。请检查 'output' 文件夹。
 ```

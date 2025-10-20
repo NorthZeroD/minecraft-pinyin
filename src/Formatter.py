@@ -67,7 +67,7 @@ class Formatter:
         l = ""
         r = ""
         while not l in format_codes:
-            l = input("'XXX | ...' 现在输入左侧内容: ")
+            l = input("[用户输入] 'XXX | ...' 现在输入左侧内容: ")
             if l == "none":
                 print("左侧内容不可为 'none'。请重新输入。")
                 l = ""
@@ -75,14 +75,14 @@ class Formatter:
             if not l in format_codes:
                 print(f"格式化代码 '{l}' 不存在。请重新输入。")
         while not r in format_codes:
-            r = input(f"'{l} | XXX' 现在输入右侧内容: ")
+            r = input(f"[用户输入] '{l} | XXX' 现在输入右侧内容: ")
             if not r in format_codes:
                 print(f"格式化代码 '{r}' 不存在。请重新输入。")
         if r == "none":
             print(f"\n你已选定格式: '{format_maps[l]}'")
         else:
             print(f"\n你已选定格式: '{format_maps[l]} | {format_maps[r]}'")
-        a = input("(Y)是的，继续 (n)不对，重选\n")
+        a = input("(Y)是的，继续 (n)不对，重选\n[用户输入] 你的选择: ")
         if a == "y" or a == "Y" or a == "":
             self.left_content_code = l
             self.right_content_code = r

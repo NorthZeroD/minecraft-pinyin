@@ -3,6 +3,7 @@ from Formatter import Formatter
 from lang_generate import lang_generate
 from pack_generate import pack_generate
 from dict_generate import dict_generate
+from minecraft_versions import get_release_versions, get_snapshot_versions
 
 question = """
 你想做什么?
@@ -11,7 +12,8 @@ question = """
 3. 生成Rime词库
 4. 退出
 
-你的选择: """
+* 直接回车以选择默认项
+[用户输入] 你的选择: """
 
 
 def main() -> None:
@@ -26,11 +28,16 @@ def main() -> None:
             latest_snapshot_version, f"download/{latest_snapshot_version}"
         )
         dict_generate(latest_snapshot_version, latest_snapshot_zhcn_lang_json)
+        print("[结束] 任务已完成。请检查 'output' 文件夹。")
         return
 
     version_manifest_json = download.get_version_manifest_json()
-    print(version_manifest_json["latest"])
-    mcv = input("输入一个MC版本号: ")
+    latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
+    for i in range(5):
+        print(f"{get_release_versions()[i]}\t\t{get_snapshot_versions()[i]}")
+    mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_snapshot_version}): ")
+    if mcv == "":
+        mcv = version_manifest_json["latest"]["snapshot"]
     zhcn_lang_json = download.get_zhcn_lang_json(mcv, f"download/{mcv}")
     formatter = Formatter()
     formatter.run()
@@ -43,13 +50,14 @@ def main() -> None:
         mcv, base_resourcepack_name, base_zhcn_lang_json_name, "zh_cn", formatter
     )
     if a == "2":
+        print("[结束] 任务已完成。请检查 'output' 文件夹。")
         return
 
-    latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
     latest_snapshot_zhcn_lang_json = download.get_zhcn_lang_json(
         latest_snapshot_version, f"download/{latest_snapshot_version}"
     )
     dict_generate(latest_snapshot_version, latest_snapshot_zhcn_lang_json)
+    print("[结束] 任务已完成。请检查 'output' 文件夹。")
 
 
 if __name__ == "__main__":

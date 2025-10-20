@@ -7,7 +7,7 @@ from phrases_dict import phrases_dict
 def dict_generate(
     minecraft_version: str, lang_json: dict, output_dir: str = "output"
 ) -> None:
-    print("[词典] 开始生成Rime词典...")
+    print("[词库] 开始生成Rime词库...")
 
     cc_cedict.load()
     load_phrases_dict(phrases_dict)
@@ -39,4 +39,4 @@ def dict_generate(
         for k, v in result_dict.items():
             f.write(f"{k}\t{v}\n")
 
-    print(f"[词典] 已生成词典并保存到 {output_dir}/minecraft.dict.yaml")
+    print(f"[词库] 已生成词库并保存到 {output_dir}/minecraft.dict.yaml")

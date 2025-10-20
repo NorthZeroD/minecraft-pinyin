@@ -845,3 +845,27 @@ minecraft_versions = [
     "rd-132328",
     "rd-132211",
 ]
+
+import re
+
+
+def get_release_versions() -> list:
+    release_versions = []
+    for v in minecraft_versions:
+        # 检查是否符合版本号格式（如 "x.y" 或 "x.y.z"）
+        if re.match(r"^\d+\.\d+(\.\d+)?$", v):
+            release_versions.append(v)
+    return release_versions
+
+
+def get_snapshot_versions() -> list:
+    snapshot_versions = []
+    for v in minecraft_versions:
+        if not re.match(r"^\d+\.\d+(\.\d+)?$", v):
+            snapshot_versions.append(v)
+    return snapshot_versions
+
+
+if __name__ == "__main__":
+    print(get_release_versions())
+    print(get_snapshot_versions())

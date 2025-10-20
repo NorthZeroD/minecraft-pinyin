@@ -45,7 +45,7 @@ class Downloader:
             print(f"已下载并保存 {filepath}")
             return j
         except Exception as e:
-            raise Exception(f"Downloader.get_json_file({filename}, {url}): {str(e)}")
+            print(f"Downloader.get_json_file({filename}, {url}): {str(e)}")
 
     def get_version_manifest_json(self) -> dict:
         version_manifest_json = self.get_json_file(

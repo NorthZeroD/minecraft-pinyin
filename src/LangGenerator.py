@@ -5,33 +5,33 @@ from typing import Callable, Union
 from pypinyin import lazy_pinyin, load_phrases_dict
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
 from phrases_dict import phrases_dict
+from Formatter import Formatter
 
 
 class LangGenerator:
-    left_converter: Union[Callable, str]
-    right_converter: Union[Callable, str]
+    formatter: Formatter
     lang_jsons: dict
+    minecraft_version: str
     output_dir: str
 
     def __init__(
         self,
-        left_converter: Union[Callable, str],
-        right_converter: Union[Callable, str],
+        formatter: Formatter,
         lang_jsons: dict,
         output_dir: str,
         minecraft_version: str,
     ) -> None:
-        self.left_converter = left_converter
-        self.right_converter = right_converter
+        self.formatter = formatter
         self.lang_jsons = deepcopy(lang_jsons)
-        self.output_dir = f"{output_dir}/{minecraft_version}"
+        self.minecraft_version = minecraft_version
+        self.output_dir = output_dir
 
     def run(self) -> None:
         cc_cedict.load()
         load_phrases_dict(phrases_dict)
         zhcn_lang = self.lang_jsons["zh_cn"]
-        lc = self.left_converter
-        rc = self.right_converter
+        lc = self.formatter.left_converter
+        rc = self.formatter.right_converter
         for k, v in zhcn_lang.items():
             if (
                 not k.startswith("item.minecraft.")
@@ -58,8 +58,11 @@ class LangGenerator:
                     print(e)
                 result = f"{result} | {rc(pinyin_list)}"
             zhcn_lang[k] = result
-        os.makedirs(self.output_dir, exist_ok=True)
-        filepath = f"{self.output_dir}/zh_cn.json"
+        mcv = self.minecraft_version
+        lcc = self.formatter.left_content_code
+        rcc = self.formatter.right_content_code
+        os.makedirs(f'{self.output_dir}/{mcv}', exist_ok=True)
+        filepath = f"{self.output_dir}/{mcv}/zh_cn_{mcv}_{lcc}_{rcc}.json"
         with open(
             filepath,
             "w",
@@ -71,7 +74,6 @@ class LangGenerator:
                 ensure_ascii=False,
                 indent=2,
             )
-
 
 
 if __name__ == "__main__":

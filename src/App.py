@@ -1,6 +1,7 @@
 from Downloader import Downloader
-from Fomatter import Formatter
+from Formatter import Formatter
 from LangGenerator import LangGenerator
+from PackGenerator import PackGenerator
 
 
 class App:
@@ -9,6 +10,7 @@ class App:
     downloader: Downloader
     formatter: Formatter
     langGenerator: LangGenerator
+    packGenerator: PackGenerator
 
     def __init__(
         self,
@@ -24,13 +26,24 @@ class App:
         self.downloader.run()
         self.formatter.run()
         self.langGenerator = LangGenerator(
-            self.formatter.left_converter,
-            self.formatter.right_converter,
+            self.formatter,
             self.downloader.lang_jsons,
             self.output_dir,
-            self.downloader.minecraft_version
+            self.downloader.minecraft_version,
         )
+        mcv = self.downloader.minecraft_version
+        lcc = self.formatter.left_content_code
+        rcc = self.formatter.right_content_code
+        base_resourcepack_name = f"Pinyin_Resource_Pack_{mcv}_{lcc}_{rcc}"
+        base_lang_json_name = f"zh_cn_{mcv}_{lcc}_{rcc}"
         self.langGenerator.run()
+        self.packGenerator = PackGenerator(
+            self.output_dir,
+            self.downloader.minecraft_version,
+            base_resourcepack_name,
+            base_lang_json_name,
+        )
+        self.packGenerator.run()
 
 
 if __name__ == "__main__":

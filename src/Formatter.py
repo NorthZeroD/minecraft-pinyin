@@ -34,8 +34,8 @@ format_converters = {
 
 
 class Formatter:
-    left_content: str
-    right_content: str
+    left_content_code: str
+    right_content_code: str
     left_converter: Callable
     right_converter: Callable
 
@@ -63,8 +63,8 @@ class Formatter:
             print(f"\n你已选定格式: '{l} | {r}'")
         a = input("(Y)是的，继续 (n)不对，重选\n")
         if a == "y" or a == "Y" or a == "":
-            self.left_content = l
-            self.right_content = r
+            self.left_content_code = l
+            self.right_content_code = r
             self.left_converter = format_converters[l]
             self.right_converter = format_converters[r]
         else:

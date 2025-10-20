@@ -2,6 +2,21 @@ from guide import show_guide
 from typing import Callable
 from converters import *
 
+format_maps = {
+    "src": "原文",
+    "szm": "首字母",
+    "qp": "全拼",
+    "xh": "小鹤双拼",
+    "zrm": "自然码",
+    "sg": "搜狗双拼",
+    "wr": "微软双拼",
+    "zg": "紫光双拼",
+    "abc": "智能ABC",
+    "gb": "国标双拼",
+    "jj": "拼音加加",
+    "none": "无",
+}
+
 format_codes = [
     "src",
     "szm",
@@ -60,7 +75,7 @@ class Formatter:
         if r == "none":
             print(f"\n你已选定格式: '{l}'")
         else:
-            print(f"\n你已选定格式: '{l} | {r}'")
+            print(f"\n你已选定格式: '{format_maps[l]} | {format_maps[r]}'")
         a = input("(Y)是的，继续 (n)不对，重选\n")
         if a == "y" or a == "Y" or a == "":
             self.left_content_code = l

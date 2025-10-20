@@ -1,7 +1,7 @@
 guide: str = """
 有以下可用格式代码:
 
-src\t原文本
+src\t原文
 szm\t首字母
 qp\t全拼
 xh\t小鹤双拼

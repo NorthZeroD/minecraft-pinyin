@@ -39,7 +39,9 @@ def main() -> None:
     rcc = formatter.right_content_code
     base_resourcepack_name = f"Pinyin_Resource_Pack_{mcv}_{lcc}_{rcc}"
     base_zhcn_lang_json_name = f"zh_cn_{mcv}_{lcc}_{rcc}"
-    pack_generate(mcv, base_resourcepack_name, base_zhcn_lang_json_name, "zh_cn")
+    pack_generate(
+        mcv, base_resourcepack_name, base_zhcn_lang_json_name, "zh_cn", formatter
+    )
     if a == "2":
         return
 

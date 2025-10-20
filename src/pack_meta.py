@@ -17,9 +17,12 @@ pack_meta_old = {
 }
 
 
-def get_pack_meta(minecraft_version: str) -> dict:
+def get_pack_meta(minecraft_version: str, description: str) -> dict:
     index_current = minecraft_versions.index(minecraft_version)
     index_25w31a = minecraft_versions.index("25w31a")
     if index_current > index_25w31a:
-        return pack_meta_old
-    return pack_meta_new
+        pack_meta = pack_meta_old
+    else:
+        pack_meta = pack_meta_new
+    pack_meta["pack"]["description"] = description
+    return pack_meta

@@ -15,10 +15,11 @@ def get_json_file(filename: str, url: str, download_dir: str = "download") -> di
     filepath = f"{download_dir}/{filename}"
     try:
         j = hitcache(filepath)
-        print(f"命中缓存: {filepath}")
+        print(f"[下载] 命中缓存 {filepath}")
         return j
     except:
         pass
+    print(f"[下载] 开始下载文件 {filename}")
     try:
         r = requests.get(url)
         j = json.loads(r.text)
@@ -33,10 +34,10 @@ def get_json_file(filename: str, url: str, download_dir: str = "download") -> di
                 ensure_ascii=False,
                 indent=2,
             )
-        print(f"已下载并保存 {filepath}")
+        print(f"[下载] 已保存到 {filepath}")
         return j
     except Exception as e:
-        raise Exception(f"Downloader.get_json_file({filename}, {url}): {str(e)}")
+        raise Exception(f"[错误] 网络故障: {str(e)}")
 
 
 def get_version_manifest_json(download_dir: str = "download") -> dict:
@@ -55,7 +56,7 @@ def get_version_json(minecraft_version: str, download_dir: str = "download") -> 
             url = v["url"]
             version_json = get_json_file(f"{minecraft_version}.json", url, download_dir)
             return version_json
-    raise Exception(f"不存在的版本: {minecraft_version}")
+    raise Exception(f"[错误] 版本不存在: {minecraft_version}")
 
 
 def get_asset_index_json(

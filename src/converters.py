@@ -75,3 +75,18 @@ if __name__ == "__main__":
     load_phrases_dict(phrases_dict)
     l = lazy_pinyin("快乐恶魂刷怪蛋", errors="exception")
     print(sg(l))
+
+format_converters = {
+    "src": "src",
+    "szm": szm,
+    "qp": qp,
+    "xh": xh,
+    "zrm": zrm,
+    "sg": sg,
+    "wr": wr,
+    "zg": zg,
+    "abc": abc,
+    "gb": gb,
+    "jj": jj,
+    "none": "none",
+}

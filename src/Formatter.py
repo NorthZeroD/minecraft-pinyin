@@ -1,6 +1,5 @@
-from guide import show_guide
 from typing import Callable
-from converters import *
+from converters import format_converters
 
 format_maps = {
     "src": "原文",
@@ -32,20 +31,27 @@ format_codes = [
     "none",
 ]
 
-format_converters = {
-    "src": "src",
-    "szm": szm,
-    "qp": qp,
-    "xh": xh,
-    "zrm": zrm,
-    "sg": sg,
-    "wr": wr,
-    "zg": zg,
-    "abc": abc,
-    "gb": gb,
-    "jj": jj,
-    "none": "none",
-}
+
+guide: str = """
+有以下可用格式代码:
+
+src\t原文
+szm\t首字母
+qp\t全拼
+xh\t小鹤双拼
+zrm\t自然码
+sg\t搜狗双拼
+wr\t微软双拼
+zg\t紫光双拼
+abc\t智能ABC
+gb\t国标双拼
+jj\t拼音加加
+none\t无
+
+接下来你将自定义资源包的语言格式。
+例如 'src | szm' 你将最终得到 '草方块 | cfk' 的效果。
+例如 'qp | none' 你将最终得到 'caofangkuai' 的效果。
+"""
 
 
 class Formatter:
@@ -73,7 +79,7 @@ class Formatter:
             if not r in format_codes:
                 print(f"格式化代码 '{r}' 不存在。请重新输入。")
         if r == "none":
-            print(f"\n你已选定格式: '{l}'")
+            print(f"\n你已选定格式: '{format_maps[l]}'")
         else:
             print(f"\n你已选定格式: '{format_maps[l]} | {format_maps[r]}'")
         a = input("(Y)是的，继续 (n)不对，重选\n")
@@ -86,7 +92,7 @@ class Formatter:
             self.select()
 
     def run(self) -> None:
-        show_guide()
+        print(guide)
         self.select()
 
 

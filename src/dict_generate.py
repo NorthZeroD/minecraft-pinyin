@@ -5,8 +5,10 @@ from phrases_dict import phrases_dict
 
 
 def dict_generate(
-    minecraft_version: str, lang_json: dict, output_dir_root: str = "output"
+    minecraft_version: str, lang_json: dict, output_dir: str = "output"
 ) -> None:
+    print("[词典] 开始生成Rime词典...")
+
     cc_cedict.load()
     load_phrases_dict(phrases_dict)
     result_dict = {}
@@ -27,9 +29,8 @@ def dict_generate(
         except Exception as e:
             pass
 
-    output_dir_sub = f"{output_dir_root}/{minecraft_version}"
-    os.makedirs(output_dir_sub, exist_ok=True)
-    with open(f"{output_dir_sub}/minecraft.dict.yaml", "w", encoding="utf-8") as f:
+    os.makedirs(output_dir, exist_ok=True)
+    with open(f"{output_dir}/minecraft.dict.yaml", "w", encoding="utf-8") as f:
         f.write("---\n")
         f.write('name: "Minecraft Dictionary"\n')
         f.write(f'version: "{minecraft_version}"\n')
@@ -38,4 +39,4 @@ def dict_generate(
         for k, v in result_dict.items():
             f.write(f"{k}\t{v}\n")
 
-    print(f"已生成并保存 {output_dir_sub}/minecraft.dict.yaml")
+    print(f"[词典] 已生成词典并保存到 {output_dir}/minecraft.dict.yaml")

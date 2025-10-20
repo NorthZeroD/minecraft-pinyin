@@ -2,6 +2,8 @@
 
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**，支持全拼、各种双拼和首字母！
 
+你还能对资源包语言格式进行[**自定义**](#脚本交互)！
+
 ![资源包列表展示](./.screenshot/pic4.webp)
 ![物品搜索](./.screenshot/pic1.webp)
 ![词库](./.screenshot/pic2.webp)
@@ -71,4 +73,48 @@ git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pin
 
 ```bash
 script\run.bat
+```
+
+## 脚本交互
+
+```text
+你想做什么?
+1. 生成资源包和Rime词库 (默认)
+2. 生成资源包
+3. 生成Rime词库
+4. 退出
+
+你的选择: 2
+命中缓存: download/version_manifest.json
+{'release': '1.21.10', 'snapshot': '25w42a'}
+输入一个MC版本号: 1.21.10
+命中缓存: download/version_manifest.json
+命中缓存: download/1.21.10/1.21.10.json
+命中缓存: download/1.21.10/27.json
+命中缓存: download/1.21.10/zh_cn.json
+
+有以下可用格式代码:
+
+src     原文
+szm     首字母
+qp      全拼
+xh      小鹤双拼
+zrm     自然码
+sg      搜狗双拼
+wr      微软双拼
+zg      紫光双拼
+abc     智能ABC
+gb      国标双拼
+jj      拼音加加
+none    无
+
+接下来你将自定义资源包的语言格式。
+例如 'src | szm' 你将最终得到 '草方块 | cfk' 的效果。
+例如 'qp | none' 你将最终得到 'caofangkuai' 的效果。
+
+'XXX | ...' 现在输入左侧内容: src
+'src | XXX' 现在输入右侧内容: xh
+
+你已选定格式: '原文 | 小鹤双拼'
+(Y)是的，继续 (n)不对，重选
 ```

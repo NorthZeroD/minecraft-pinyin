@@ -23,7 +23,7 @@
 - [X] 智能ABC
 - [ ] 粤拼(港繁)
 
-*积极维护中...*
+*⭐积极维护中⭐*
 
 ## 使用
 
@@ -131,3 +131,9 @@ none    无
 [词库] 已生成词库并保存到 output/minecraft.dict.yaml
 [结束] 任务已完成。请检查 'output' 文件夹。
 ```
+
+## 其他
+
+使用 `script` 目录下的 `clean.sh` 或 `clean.bat` 清理 `download` 和 `output` 目录。
+
+使用 `clean.sh` 或 `clean.bat` 递归清理 `__pycache__` 目录。

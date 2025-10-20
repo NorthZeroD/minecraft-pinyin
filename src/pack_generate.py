@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+from pathlib import Path
 from pack_meta import get_pack_meta
 from Formatter import Formatter, format_maps
 
@@ -15,10 +16,11 @@ def pack_generate(
 ) -> None:
     print("[资源包] 开始生成资源包...")
 
-    output_dir_sub = f"{output_dir_root}/{minecraft_version}"
-    output_dir_rp = f"{output_dir_sub}/{base_resourcepack_name}"
+    output_dir_sub = Path(output_dir_root) / minecraft_version
+    output_dir_rp = output_dir_sub / base_resourcepack_name
+    output_lang_dir = output_dir_rp / "assets/minecraft/lang"
 
-    os.makedirs(f"{output_dir_rp}/assets/minecraft/lang", exist_ok=True)
+    os.makedirs(output_lang_dir, exist_ok=True)
 
     l = format_maps[formatter.left_content_code]
     r = format_maps[formatter.right_content_code]
@@ -27,14 +29,14 @@ def pack_generate(
     else:
         desc = f"{l} | {r}\nNorthZeroD/minecraft-pinyin"
     pack_meta = get_pack_meta(minecraft_version, desc)
-    with open(f"{output_dir_rp}/pack.mcmeta", "w", encoding="utf-8") as f:
+    with open(output_dir_rp / "pack.mcmeta", "w", encoding="utf-8") as f:
         json.dump(pack_meta, f, ensure_ascii=False, indent=2)
 
     shutil.copy(
-        f"{output_dir_sub}/{base_source_lang_json_name}.json",
-        f"{output_dir_rp}/assets/minecraft/lang/{base_target_lang_json_name}.json",
+        output_dir_sub / f"{base_source_lang_json_name}.json",
+        output_lang_dir / f"{base_target_lang_json_name}.json",
     )
     shutil.copy("icon/pack.png", output_dir_rp)
 
-    shutil.make_archive(output_dir_rp, "zip", output_dir_rp)
+    shutil.make_archive(str(output_dir_rp), "zip", output_dir_rp)
     print(f"[资源包] 已生成资源包并保存到 {output_dir_rp}.zip")

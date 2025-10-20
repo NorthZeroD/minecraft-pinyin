@@ -26,7 +26,7 @@ def dict_generate(
             pinyin_list = lazy_pinyin(v, style=Style.TONE, errors="exception")
             pinyin_str = " ".join(pinyin_list)
             result_dict.update({v: pinyin_str})
-        except Exception as e:
+        except Exception:
             pass
 
     os.makedirs(output_dir, exist_ok=True)

@@ -6,8 +6,6 @@
 ![词库](./.screenshot/pic2.webp)
 ![输入法展示](./.screenshot/pic3.webp)
 
-[使用](#使用)
-
 当前支持的资源包拼音方案:
 
 - [x] 首字母
@@ -28,15 +26,17 @@
 
 **请确保你的操作系统上已安装 git 和 python，然后再进行下一步。**
 
+或者，下载[源代码压缩包](https://github.com/NorthZeroD/minecraft-pinyin/archive/refs/heads/main.zip)，在项目根目录进行以下操作中的步骤2️⃣。
+
 ### Linux
 
-1. 克隆项目并切换到项目根目录
+1️⃣ 克隆项目并切换到项目根目录
 
 ```bash
 git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pinyin
 ```
 
-2. 更改脚本权限并执行
+2️⃣ 更改脚本权限并执行
 
 ```bash
 chmod +x script/run.sh && ./script/run.sh
@@ -44,7 +44,7 @@ chmod +x script/run.sh && ./script/run.sh
 
 ### Windows
 
-1. 克隆项目并切换到项目根目录
+1️⃣ 克隆项目并切换到项目根目录
 
 如果使用 **PowerShell 5**:
 
@@ -58,7 +58,7 @@ git clone https://github.com/NorthZeroD/minecraft-pinyin.git ; cd minecraft-piny
 git clone https://github.com/NorthZeroD/minecraft-pinyin.git && cd minecraft-pinyin
 ```
 
-2. 执行脚本
+2️⃣ 执行脚本
 
 如果使用 **Powershell**:
 

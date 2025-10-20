@@ -13,23 +13,36 @@ class Downloader:
     def __init__(self, download_dir: str) -> None:
         self.download_dir = download_dir
 
+    def hitcache(self, filepath: str) -> dict:
+        if os.path.exists(filepath):
+            with open(filepath, "r", encoding="utf-8") as f:
+                return json.loads(f.read())
+        raise Exception(f"缓存未命中: {filepath}")
+
     def get_json_file(self, filename: str, url: str) -> dict:
+        filepath = f"{self.download_dir}/{filename}"
+        try:
+            j = self.hitcache(filepath)
+            print(f"命中缓存: {filepath}")
+            return j
+        except:
+            pass
         try:
             r = requests.get(url)
-            data = json.loads(r.text)
+            j = json.loads(r.text)
             with open(
-                f"{self.download_dir}/{filename}",
+                filepath,
                 "w",
                 encoding="utf-8",
             ) as f:
                 json.dump(
-                    data,
+                    j,
                     f,
                     ensure_ascii=False,
                     indent=2,
                 )
-            print(f"已下载并保存 {self.download_dir}/{filename}")
-            return data
+            print(f"已下载并保存 {filepath}")
+            return j
         except Exception as e:
             raise Exception(f"Downloader.get_json_file({filename}, {url}): {str(e)}")
 
@@ -51,7 +64,7 @@ class Downloader:
         raise Exception(f"不存在的版本: {minecraft_version}")
 
     def get_asset_index_json(self, version_json: dict) -> dict:
-        filename = version_json["assets"]
+        filename = f'{version_json["assets"]}.json'
         url = version_json["assetIndex"]["url"]
         asset_index_json = self.get_json_file(filename, url)
         return asset_index_json
@@ -75,6 +88,8 @@ class Downloader:
         self.version_manifest_json = self.get_version_manifest_json()
         print(self.version_manifest_json["latest"])
         minecraft_version = input("输入一个MC版本号: ")
+        self.download_dir += f"/{minecraft_version}"
+        os.makedirs(self.download_dir, exist_ok=True)
         self.version_json = self.get_version_json(
             minecraft_version, self.version_manifest_json
         )

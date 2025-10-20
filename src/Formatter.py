@@ -1,3 +1,7 @@
+from guide import show_guide
+from typing import Callable
+from converters import *
+
 format_codes = [
     "src",
     "szm",
@@ -12,10 +16,6 @@ format_codes = [
     "jj",
     "none",
 ]
-
-from Intro import Intro
-from typing import Callable
-from converters import *
 
 format_converters = {
     "src": "src",
@@ -71,7 +71,7 @@ class Formatter:
             self.select()
 
     def run(self) -> None:
-        Intro.show()
+        show_guide()
         self.select()
 
 

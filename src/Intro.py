@@ -17,7 +17,16 @@ none\t无
 接下来你将自定义资源包的语言格式。
 例如 'src | szm' 你将最终得到 '草方块 | cfk' 的效果。
 例如 'qp | none' 你将最终得到 'caofangkuai' 的效果。
+
+(回车)继续
 """
+
+
+class Intro:
+    @staticmethod
+    def show() -> None:
+        input(intro)
+
 
 if __name__ == "__main__":
     print(intro)

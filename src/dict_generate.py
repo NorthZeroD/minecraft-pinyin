@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from pypinyin import lazy_pinyin, load_phrases_dict, Style
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
 from phrases_dict import phrases_dict
@@ -30,7 +31,8 @@ def dict_generate(
             pass
 
     os.makedirs(output_dir, exist_ok=True)
-    with open(f"{output_dir}/minecraft.dict.yaml", "w", encoding="utf-8") as f:
+    filepath = Path(f"{output_dir}/minecraft.dict.yaml")
+    with open(filepath, "w", encoding="utf-8") as f:
         f.write("---\n")
         f.write('name: "Minecraft Dictionary"\n')
         f.write(f'version: "{minecraft_version}"\n')
@@ -39,4 +41,4 @@ def dict_generate(
         for k, v in result_dict.items():
             f.write(f"{k}\t{v}\n")
 
-    print(f"[词库] 已生成词库并保存到 {output_dir}/minecraft.dict.yaml")
+    print(f"[词库] 已生成词库并保存到 {filepath}")

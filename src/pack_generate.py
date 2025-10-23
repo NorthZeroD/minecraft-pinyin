@@ -12,6 +12,7 @@ def pack_generate(
     base_source_lang_json_name: str,
     base_target_lang_json_name: str,
     formatter: Formatter,
+    minecraft_versions: list,
     output_dir_root: str = "output",
 ) -> None:
     print("[资源包] 开始生成资源包...")
@@ -28,7 +29,7 @@ def pack_generate(
         desc = f"{l}\nNorthZeroD/minecraft-pinyin"
     else:
         desc = f"{l} | {r}\nNorthZeroD/minecraft-pinyin"
-    pack_meta = get_pack_meta(minecraft_version, desc)
+    pack_meta = get_pack_meta(minecraft_version, desc, minecraft_versions)
     with open(output_dir_rp / "pack.mcmeta", "w", encoding="utf-8") as f:
         json.dump(pack_meta, f, ensure_ascii=False, indent=2)
 

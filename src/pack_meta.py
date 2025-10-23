@@ -1,5 +1,3 @@
-from minecraft_versions import minecraft_versions
-
 pack_meta_new = {
     "pack": {
         "description": "Pinyin Resource Pack\nNorthZeroD/minecraft-pinyin",
@@ -17,7 +15,11 @@ pack_meta_old = {
 }
 
 
-def get_pack_meta(minecraft_version: str, description: str) -> dict:
+def get_pack_meta(
+    minecraft_version: str,
+    description: str,
+    minecraft_versions: list,
+) -> dict:
     index_current = minecraft_versions.index(minecraft_version)
     index_25w31a = minecraft_versions.index("25w31a")
     if index_current > index_25w31a:

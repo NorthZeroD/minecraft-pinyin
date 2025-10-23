@@ -3,7 +3,11 @@ from Formatter import Formatter
 from lang_generate import lang_generate
 from pack_generate import pack_generate
 from dict_generate import dict_generate
-from minecraft_versions import get_release_versions, get_snapshot_versions
+from minecraft_versions import (
+    get_minecraft_versions,
+    get_release_versions,
+    get_snapshot_versions,
+)
 
 question = """
 你想做什么?
@@ -36,9 +40,12 @@ def main() -> None:
         return
 
     version_manifest_json = download.get_version_manifest_json()
+    minecraft_versions = get_minecraft_versions(version_manifest_json)
+    release_versions = get_release_versions(minecraft_versions)
+    snapshot_versions = get_snapshot_versions(minecraft_versions)
     latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
     for i in range(5):
-        print(f"{get_release_versions()[i]}\t\t{get_snapshot_versions()[i]}")
+        print(f"{release_versions[i]}\t\t{snapshot_versions[i]}")
     mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_snapshot_version}): ")
     if mcv == "":
         mcv = version_manifest_json["latest"]["snapshot"]
@@ -51,7 +58,12 @@ def main() -> None:
     base_resourcepack_name = f"Pinyin_Resource_Pack_{mcv}_{lcc}_{rcc}"
     base_zhcn_lang_json_name = f"zh_cn_{mcv}_{lcc}_{rcc}"
     pack_generate(
-        mcv, base_resourcepack_name, base_zhcn_lang_json_name, "zh_cn", formatter
+        mcv,
+        base_resourcepack_name,
+        base_zhcn_lang_json_name,
+        "zh_cn",
+        formatter,
+        minecraft_versions,
     )
     if a == "2":
         print("[结束] 任务已完成。请检查 'output' 文件夹。")

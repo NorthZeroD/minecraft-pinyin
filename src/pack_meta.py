@@ -21,6 +21,7 @@ def get_pack_meta(
     minecraft_versions: list,
 ) -> dict:
     index_current = minecraft_versions.index(minecraft_version)
+    # 版本小于(索引大于) 25w31a 使用 pack_meta_old
     index_25w31a = minecraft_versions.index("25w31a")
     if index_current > index_25w31a:
         pack_meta = pack_meta_old

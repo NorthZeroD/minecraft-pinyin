@@ -25,24 +25,21 @@ def lang_generate(
             and not k.startswith("enchantment.minecraft.")
         ):
             continue
-        if isinstance(lc, str):
+        try:
+            # if isinstance(lc, str):
             result = v
-        elif isinstance(lc, Callable):
-            try:
+            if isinstance(lc, Callable):
                 pinyin_list = lazy_pinyin(v, errors="exception")
-            except Exception as e:
-                print(e)
-            result = lc(pinyin_list)
-        if isinstance(rc, str):
-            if rc == "src":
-                result = f"{result} | {v}"
-        elif isinstance(rc, Callable):
-            try:
+                result = lc(pinyin_list)
+            if isinstance(rc, str):
+                if rc == "src":
+                    result = f"{result} | {v}"
+            elif isinstance(rc, Callable):
                 pinyin_list = lazy_pinyin(v, errors="exception")
-            except Exception as e:
-                print(e)
-            result = f"{result} | {rc(pinyin_list)}"
-        lang_json[k] = result
+                result = f"{result} | {rc(pinyin_list)}"
+            lang_json[k] = result
+        except Exception as e:
+            print(e)
     os.makedirs(f"{output_dir}/{mcv}", exist_ok=True)
     filepath = f"{output_dir}/{mcv}/zh_cn_{mcv}_{lcc}_{rcc}.json"
     with open(

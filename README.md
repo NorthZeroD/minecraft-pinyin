@@ -29,6 +29,8 @@
 
 ## 使用
 
+[**在此处下载预生成的资源包和词库**](#发行版)
+
 **请确保你的操作系统上已安装 git 和 python，然后再进行下一步。**
 
 或者，下载[源代码压缩包](https://github.com/NorthZeroD/minecraft-pinyin/archive/refs/heads/main.zip)，在项目根目录进行以下操作中的步骤2️⃣。
@@ -139,3 +141,32 @@ none    无
 使用 `script` 目录下的 `clean.sh` 或 `clean.bat` 清理 `download` 和 `output` 目录。
 
 使用 `clean.sh` 或 `clean.bat` 递归清理 `__pycache__` 目录。
+
+## 发行版
+
+[资源包 [25w43a]](https://github.com/NorthZeroD/minecraft-pinyin/releases/tag/rp-25w43)
+
+适用于 MC (1.21.8, 25w43a]
+
+[资源包 [1.21.8]](https://github.com/NorthZeroD/minecraft-pinyin/releases/tag/rp-1.21.8)
+
+适用于 MC [1.13, 1.21.8]
+
+[Rime词库 [25w43a]](https://github.com/NorthZeroD/minecraft-pinyin/releases/tag/dict-25w43a)
+
+### 资源包命名
+
+`Pinyin_Resource_Pack_<MC版本号>_src_<拼音方案>.zip`
+
+拼音方案一览：
+
+- szm 首字母
+- qp  全拼
+- xh  小鹤双拼
+- zrm 自然码
+- sg  搜狗双拼
+- wr  微软双拼
+- zg  紫光双拼
+- abc 智能ABC
+- gb  国标双拼
+- jj  拼音加加

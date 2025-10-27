@@ -1,7 +1,7 @@
 import re
 
 
-def get_minecraft_versions(version_manifest_json: dict) -> list:
+def get_minecraft_versions(version_manifest_json: dict) -> list[str]:
     minecraft_versions = []
     versions = version_manifest_json["versions"]
     for v in versions:
@@ -9,7 +9,7 @@ def get_minecraft_versions(version_manifest_json: dict) -> list:
     return minecraft_versions
 
 
-def get_release_versions(minecraft_versions: list) -> list:
+def get_release_versions(minecraft_versions: list) -> list[str]:
     release_versions = []
     for v in minecraft_versions:
         # 检查是否符合版本号格式（如 "x.y" 或 "x.y.z"）
@@ -18,7 +18,7 @@ def get_release_versions(minecraft_versions: list) -> list:
     return release_versions
 
 
-def get_snapshot_versions(minecraft_versions: list) -> list:
+def get_snapshot_versions(minecraft_versions: list) -> list[str]:
     snapshot_versions = []
     for v in minecraft_versions:
         if not re.match(r"^\d+\.\d+(\.\d+)?$", v):

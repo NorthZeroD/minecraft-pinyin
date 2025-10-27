@@ -40,4 +40,5 @@ def pack_generate(
     shutil.copy("icon/pack.png", output_dir_rp)
 
     shutil.make_archive(str(output_dir_rp), "zip", output_dir_rp)
+    shutil.rmtree(output_dir_rp)
     print(f"[资源包] 已生成资源包并保存到 {output_dir_rp}.zip")

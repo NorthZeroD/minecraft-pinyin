@@ -83,7 +83,7 @@ def get_zhcn_lang_json(
     minecraft_version: str,
     download_dir: str = "download",
     download_dir_sub: str = "",
-) -> dict:
+) -> dict[str, str]:
     asset_index_json = get_asset_index_json(
         minecraft_version, download_dir, "assetIndex"
     )
@@ -101,7 +101,7 @@ def get_zhhk_lang_json(
     minecraft_version: str,
     download_dir: str = "download",
     download_dir_sub: str = "",
-) -> dict:
+) -> dict[str, str]:
     asset_index_json = get_asset_index_json(minecraft_version, download_dir)
     zhhk_lang_hash = asset_index_json["objects"]["minecraft/lang/zh_hk.json"]["hash"]
     zhhk_lang_json = get_json_file(

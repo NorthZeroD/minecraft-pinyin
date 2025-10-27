@@ -26,33 +26,23 @@ def lang_generate(
         ):
             continue
         try:
-            # if isinstance(lc, str):
             result = v
             if isinstance(lc, Callable):
-                pinyin_list = lazy_pinyin(v, errors="exception")
+                pinyin_list = lazy_pinyin(v, v_to_u=True, errors="exception")
                 result = lc(pinyin_list)
             if isinstance(rc, str):
                 if rc == "src":
                     result = f"{result} | {v}"
             elif isinstance(rc, Callable):
-                pinyin_list = lazy_pinyin(v, errors="exception")
+                pinyin_list = lazy_pinyin(v, v_to_u=True, errors="exception")
                 result = f"{result} | {rc(pinyin_list)}"
             lang_json[k] = result
         except Exception as e:
             print(e)
     os.makedirs(f"{output_dir}/{mcv}", exist_ok=True)
     filepath = f"{output_dir}/{mcv}/zh_cn_{mcv}_{lcc}_{rcc}.json"
-    with open(
-        filepath,
-        "w",
-        encoding="utf-8",
-    ) as f:
-        json.dump(
-            lang_json,
-            f,
-            ensure_ascii=False,
-            indent=2,
-        )
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(lang_json, f, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":

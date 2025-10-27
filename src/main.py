@@ -18,19 +18,18 @@ question = """
 4. 批量生成
 5. 退出
 
-* 直接回车以选择默认项
-[用户输入] 你的选择: """
+* 直接回车以选择默认项"""
 
 
 def batch() -> None:
     version_manifest_json = download.get_version_manifest_json()
     minecraft_versions = get_minecraft_versions(version_manifest_json)
+    latest_minecraft_version = minecraft_versions[0]
     release_versions = get_release_versions(minecraft_versions)
     snapshot_versions = get_snapshot_versions(minecraft_versions)
-    latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
     for i in range(5):
         print(f"{release_versions[i]}\t\t{snapshot_versions[i]}")
-    mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_snapshot_version}): ")
+    mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_minecraft_version}): ")
     if mcv == "":
         mcv = version_manifest_json["latest"]["snapshot"]
     zhcn_lang_json = download.get_zhcn_lang_json(mcv, f"download/{mcv}")
@@ -57,9 +56,9 @@ def batch() -> None:
             minecraft_versions,
         )
     latest_snapshot_zhcn_lang_json = download.get_zhcn_lang_json(
-        latest_snapshot_version, f"download/{latest_snapshot_version}"
+        latest_minecraft_version, f"download/{latest_minecraft_version}"
     )
-    dict_generate(latest_snapshot_version, latest_snapshot_zhcn_lang_json)
+    dict_generate(latest_minecraft_version, latest_snapshot_zhcn_lang_json)
     print("[结束] 任务已完成。请检查 'output' 文件夹。")
 
 
@@ -68,7 +67,13 @@ def main() -> None:
         "欢迎使用 Minecraft Pinyin 生成器！\nhttps://github.com/NorthZeroD/minecraft-pinyin"
     )
 
-    a = input(question)
+    print(question)
+    a = input("[用户输入] 你的选择: ")
+    while True:
+        if a == "" or a == "1" or a == "2" or a == "3" or a == "4" or a == "5":
+            break
+        a = input("[用户输入] 无此选项。请重新输入: ")
+
     if a == "5":
         print("[结束] 程序已退出。")
         return
@@ -79,22 +84,23 @@ def main() -> None:
 
     if a == "3":
         version_manifest_json = download.get_version_manifest_json()
-        latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
+        minecraft_versions = get_minecraft_versions(version_manifest_json)
+        latest_minecraft_version = minecraft_versions[0]
         latest_snapshot_zhcn_lang_json = download.get_zhcn_lang_json(
-            latest_snapshot_version, f"download/{latest_snapshot_version}"
+            latest_minecraft_version, f"download/{latest_minecraft_version}"
         )
-        dict_generate(latest_snapshot_version, latest_snapshot_zhcn_lang_json)
+        dict_generate(latest_minecraft_version, latest_snapshot_zhcn_lang_json)
         print("[结束] 任务已完成。请检查 'output' 文件夹。")
         return
 
     version_manifest_json = download.get_version_manifest_json()
     minecraft_versions = get_minecraft_versions(version_manifest_json)
+    latest_minecraft_version = minecraft_versions[0]
     release_versions = get_release_versions(minecraft_versions)
     snapshot_versions = get_snapshot_versions(minecraft_versions)
-    latest_snapshot_version = version_manifest_json["latest"]["snapshot"]
     for i in range(5):
         print(f"{release_versions[i]}\t\t{snapshot_versions[i]}")
-    mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_snapshot_version}): ")
+    mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_minecraft_version}): ")
     if mcv == "":
         mcv = version_manifest_json["latest"]["snapshot"]
     zhcn_lang_json = download.get_zhcn_lang_json(mcv, f"download/{mcv}")
@@ -118,9 +124,9 @@ def main() -> None:
         return
 
     latest_snapshot_zhcn_lang_json = download.get_zhcn_lang_json(
-        latest_snapshot_version, f"download/{latest_snapshot_version}"
+        latest_minecraft_version, f"download/{latest_minecraft_version}"
     )
-    dict_generate(latest_snapshot_version, latest_snapshot_zhcn_lang_json)
+    dict_generate(latest_minecraft_version, latest_snapshot_zhcn_lang_json)
     print("[结束] 任务已完成。请检查 'output' 文件夹。")
 
 

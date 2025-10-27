@@ -1,6 +1,3 @@
-from pypinyin import lazy_pinyin, load_phrases_dict
-from pypinyin_dict.phrase_pinyin_data import cc_cedict
-from phrases_dict import phrases_dict
 from schemes.xh import to_xh
 from schemes.zrm import to_zrm
 from schemes.sg import to_sg
@@ -69,12 +66,6 @@ def jj(pinyin_list: list) -> str:
     s = "".join(l)
     return s
 
-
-if __name__ == "__main__":
-    cc_cedict.load()
-    load_phrases_dict(phrases_dict)
-    l = lazy_pinyin("快乐恶魂刷怪蛋", errors="exception")
-    print(sg(l))
 
 format_converters = {
     "src": "src",

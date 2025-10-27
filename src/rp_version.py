@@ -30,15 +30,24 @@ def get_rp_version(
         return 2
     elif in_range(mv_index, mvs.index("16w32a"), mvs.index("17w47b")):
         return 3
-    elif in_range(mv_index, mvs.index("17w48a"), mvs.index("19w46b")):
+    elif (
+        in_range(mv_index, mvs.index("17w48a"), mvs.index("19w46b"))
+        or mv == "3D Shareware v1.34"
+    ):
         return 4
-    elif in_range(mv_index, mvs.index("1.15-pre1"), mvs.index("1.16.2-pre3")):
+    elif (
+        in_range(mv_index, mvs.index("1.15-pre1"), mvs.index("1.16.2-pre3"))
+        or mv == "20w14infinite"
+    ):
         return 5
     elif in_range(mv_index, mvs.index("1.16.2-rc1"), mvs.index("1.16.5")):
         return 6
     elif in_range(mv_index, mvs.index("20w45a"), mvs.index("21w38a")):
         return 7
-    elif in_range(mv_index, mvs.index("21w39a"), mvs.index("1.18.2")):
+    elif (
+        in_range(mv_index, mvs.index("21w39a"), mvs.index("1.18.2"))
+        or mv == "22w13oneblockatatime"
+    ):
         return 8
     elif in_range(mv_index, mvs.index("22w11a"), mvs.index("1.19.2")):
         return 9
@@ -46,7 +55,10 @@ def get_rp_version(
         return 11
     elif in_range(mv_index, mvs.index("22w45a"), mvs.index("23w07a")):
         return 12
-    elif in_range(mv_index, mvs.index("1.19.4-pre1"), mvs.index("23w13a")):
+    elif (
+        in_range(mv_index, mvs.index("1.19.4-pre1"), mvs.index("23w13a"))
+        or mv == "23w13a_or_b"
+    ):
         return 13
     elif in_range(mv_index, mvs.index("23w14a"), mvs.index("23w16a")):
         return 14
@@ -76,7 +88,10 @@ def get_rp_version(
         return 28
     elif in_range(mv_index, mvs.index("24w11a"), mvs.index("24w11a")):
         return 29
-    elif in_range(mv_index, mvs.index("24w12a"), mvs.index("24w12a")):
+    elif (
+        in_range(mv_index, mvs.index("24w12a"), mvs.index("24w12a"))
+        or mv == "24w14potato"
+    ):
         return 30
     elif in_range(mv_index, mvs.index("24w13a"), mvs.index("1.20.5-pre3")):
         return 31
@@ -126,7 +141,10 @@ def get_rp_version(
         return 53
     elif in_range(mv_index, mvs.index("25w10a"), mvs.index("25w10a")):
         return 54
-    elif in_range(mv_index, mvs.index("1.21.5-pre1"), mvs.index("1.21.5")):
+    elif (
+        in_range(mv_index, mvs.index("1.21.5-pre1"), mvs.index("1.21.5"))
+        or mv == "25w14craftmine"
+    ):
         return 55
     elif in_range(mv_index, mvs.index("25w15a"), mvs.index("25w15a")):
         return 56

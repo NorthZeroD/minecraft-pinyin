@@ -184,6 +184,8 @@ def get_rp_version(
         return 70.1
     elif in_range(mv_index, mvs.index("25w43a"), mvs.index("25w43a")):
         return 71.0
+    elif in_range(mv_index, mvs.index("25w44a"), mvs.index("25w44a")):
+        return 72.0
     else:
         raise ValueError(
             f"Minecraft version '{mv}' does not match any known resource pack version range"

@@ -1,6 +1,6 @@
 ---
 name: "Minecraft Dictionary"
-version: "25w44a"
+version: "25w45a"
 sort: by_weight
 ...
 金合欢木按钮	jīn hé huān mù àn niǔ
@@ -1937,6 +1937,7 @@ sort: by_weight
 旋风人	xuàn fēng rén
 风弹	fēng dàn
 骆驼	luò tuo
+骆驼尸壳	luò tuo shī ké
 猫	māo
 洞穴蜘蛛	dòng xué zhī zhū
 樱花木船	yīng huā mù chuán
@@ -2017,6 +2018,7 @@ sort: by_weight
 苍白橡木船	cāng bái xiàng mù chuán
 苍白橡木运输船	cāng bái xiàng mù yùn shū chuán
 熊猫	xióng māo
+焦骸	jiāo hái
 鹦鹉	yīng wǔ
 幻翼	huàn yì
 猪	zhū
@@ -2172,6 +2174,7 @@ sort: by_weight
 可容纳一组混合的物品	kě róng nà yī zǔ hùn hé de wù pǐn
 满	mǎn
 烈焰纹样陶片	liè yàn wén yàng táo piàn
+骆驼尸壳刷怪蛋	luò tuo shī ké shuā guài dàn
 骆驼刷怪蛋	luò tuo shuā guài dàn
 胡萝卜钓竿	hú luó bo diào gān
 猫刷怪蛋	māo shuā guài dàn
@@ -2465,6 +2468,7 @@ sort: by_weight
 橙色挽具	chéng sè wǎn jù
 熊猫刷怪蛋	xióng māo shuā guài dàn
 纸	zhǐ
+焦骸刷怪蛋	jiāo hái shuā guài dàn
 鹦鹉刷怪蛋	yīng wǔ shuā guài dàn
 幻翼膜	huàn yì mó
 幻翼刷怪蛋	huàn yì shuā guài dàn

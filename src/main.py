@@ -9,7 +9,6 @@ from minecraft_versions import (
     get_snapshot_versions,
 )
 from batch import batch
-from batch_all import batch_all
 
 question = """
 你想做什么?
@@ -17,11 +16,10 @@ question = """
 2. 生成资源包
 3. 生成Rime词库
 4. 批量生成(单版本)
-5. 批量生成(全版本，慎选)
 
 * 直接回车以选择默认项"""
 
-choices = ["", "1", "2", "3", "4", "5"]
+choices = ["", "1", "2", "3", "4"]
 
 
 def main() -> None:
@@ -40,18 +38,11 @@ def main() -> None:
         batch()
         return
 
-    if a == "5":
-        batch_all()
-        return
-
     if a == "3":
         version_manifest_json = download.get_version_manifest_json()
         minecraft_versions = get_minecraft_versions(version_manifest_json)
         latest_minecraft_version = minecraft_versions[0]
-        latest_zhcn_lang_json = download.get_zhcn_lang_json(
-            latest_minecraft_version, f"download/{latest_minecraft_version}"
-        )
-        dict_generate(latest_minecraft_version, latest_zhcn_lang_json)
+        dict_generate(latest_minecraft_version)
         print("[结束] 任务已完成。请检查 'output' 文件夹。")
         return
 
@@ -65,14 +56,14 @@ def main() -> None:
     mcv = input(f"[用户输入] 输入一个MC版本号 ({latest_minecraft_version}): ")
     if mcv == "":
         mcv = version_manifest_json["latest"]["snapshot"]
-    zhcn_lang_json = download.get_zhcn_lang_json(mcv, f"download/{mcv}")
+    zhcn_lang_json = download.get_zhcn_lang_json(mcv)
     formatter = Formatter()
     formatter.run()
     lang_generate(zhcn_lang_json, mcv, formatter)
-    lcc = formatter.left_content_code
-    rcc = formatter.right_content_code
-    base_resourcepack_name = f"Pinyin_Resource_Pack_{mcv}_{lcc}_{rcc}"
-    base_zhcn_lang_json_name = f"zh_cn_{mcv}_{lcc}_{rcc}"
+    lfc = formatter.left_format_code
+    rfc = formatter.right_format_code
+    base_resourcepack_name = f"Pinyin_Resource_Pack_{mcv}_{lfc}_{rfc}"
+    base_zhcn_lang_json_name = f"zh_cn_{mcv}_{lfc}_{rfc}"
     pack_generate(
         mcv,
         base_resourcepack_name,
@@ -85,10 +76,7 @@ def main() -> None:
         print("[结束] 任务已完成。请检查 'output' 文件夹。")
         return
 
-    latest_zhcn_lang_json = download.get_zhcn_lang_json(
-        latest_minecraft_version, f"download/{latest_minecraft_version}"
-    )
-    dict_generate(latest_minecraft_version, latest_zhcn_lang_json)
+    dict_generate(latest_minecraft_version)
     print("[结束] 任务已完成。请检查 'output' 文件夹。")
 
 

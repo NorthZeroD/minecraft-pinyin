@@ -13,8 +13,8 @@ def lang_generate(
     cc_cedict.load()
     load_phrases_dict(phrases_dict)
     mcv = minecraft_version
-    lcc = formatter.left_content_code
-    rcc = formatter.right_content_code
+    lfc = formatter.left_format_code
+    rfc = formatter.right_format_code
     lc = formatter.left_converter
     rc = formatter.right_converter
     for k, v in lang_json.items():
@@ -40,7 +40,7 @@ def lang_generate(
         except Exception as e:
             print(e)
     os.makedirs(f"{output_dir}/{mcv}", exist_ok=True)
-    filepath = f"{output_dir}/{mcv}/zh_cn_{mcv}_{lcc}_{rcc}.json"
+    filepath = f"{output_dir}/{mcv}/zh_cn_{mcv}_{lfc}_{rfc}.json"
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(lang_json, f, ensure_ascii=False, indent=2)
 

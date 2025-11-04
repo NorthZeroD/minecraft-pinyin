@@ -65,19 +65,3 @@ def jj(pinyin_list: list) -> str:
     l = [to_jj(i) for i in pinyin_list]
     s = "".join(l)
     return s
-
-
-format_converters = {
-    "src": "src",
-    "szm": szm,
-    "qp": qp,
-    "xh": xh,
-    "zrm": zrm,
-    "sg": sg,
-    "wr": wr,
-    "zg": zg,
-    "abc": abc,
-    "gb": gb,
-    "jj": jj,
-    "none": "none",
-}

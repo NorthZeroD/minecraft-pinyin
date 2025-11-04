@@ -1,5 +1,5 @@
 from typing import Callable
-from converters import format_converters
+from converters import *
 
 format_maps = {
     "src": "原文",
@@ -31,6 +31,20 @@ format_codes = [
     "none",
 ]
 
+format_converters = {
+    "src": "src",
+    "szm": szm,
+    "qp": qp,
+    "xh": xh,
+    "zrm": zrm,
+    "sg": sg,
+    "wr": wr,
+    "zg": zg,
+    "abc": abc,
+    "gb": gb,
+    "jj": jj,
+    "none": "none",
+}
 
 guide: str = """
 有以下可用格式代码:
@@ -55,8 +69,8 @@ none\t无
 
 
 class Formatter:
-    left_content_code: str
-    right_content_code: str
+    left_format_code: str
+    right_format_code: str
     left_converter: Callable
     right_converter: Callable
 
@@ -84,8 +98,8 @@ class Formatter:
             print(f"\n你已选定格式: '{format_maps[l]} | {format_maps[r]}'")
         a = input("(Y)是的，继续 (n)不对，重选\n[用户输入] 你的选择: ")
         if a == "y" or a == "Y" or a == "":
-            self.left_content_code = l
-            self.right_content_code = r
+            self.left_format_code = l
+            self.right_format_code = r
             self.left_converter = format_converters[l]
             self.right_converter = format_converters[r]
         else:

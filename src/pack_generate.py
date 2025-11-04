@@ -23,9 +23,9 @@ def pack_generate(
 
     os.makedirs(output_lang_dir, exist_ok=True)
 
-    l = format_maps[formatter.left_content_code]
-    r = format_maps[formatter.right_content_code]
-    if formatter.right_content_code == "none":
+    l = format_maps[formatter.left_format_code]
+    r = format_maps[formatter.right_format_code]
+    if formatter.right_format_code == "none":
         desc = f"{l}\nNorthZeroD/minecraft-pinyin"
     else:
         desc = f"{l} | {r}\nNorthZeroD/minecraft-pinyin"

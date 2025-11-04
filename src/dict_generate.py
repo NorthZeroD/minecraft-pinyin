@@ -3,12 +3,12 @@ from pathlib import Path
 from pypinyin import lazy_pinyin, load_phrases_dict, Style
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
 from phrases_dict import phrases_dict
+import download
 
 
-def dict_generate(
-    minecraft_version: str, lang_json: dict, output_dir: str = "output"
-) -> None:
+def dict_generate(minecraft_version: str, output_dir: str = "output") -> None:
     print("[词库] 开始生成Rime词库...")
+    lang_json = download.get_zhcn_lang_json(minecraft_version)
 
     cc_cedict.load()
     load_phrases_dict(phrases_dict)
@@ -42,3 +42,8 @@ def dict_generate(
             f.write(f"{k}\t{v}\n")
 
     print(f"[词库] 已生成词库并保存到 {filepath}")
+
+
+if __name__ == "__main__":
+    latest_minecraft_version = download.get_version_manifest_json()["versions"][0]["id"]
+    dict_generate(latest_minecraft_version)

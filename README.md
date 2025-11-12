@@ -2,6 +2,10 @@
 
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**(1.13+)，支持全拼、各种双拼和首字母！
 
+[**在 Modrinth 下载资源包**](https://modrinth.com/resourcepack/minecraft-pinyin)
+
+[**在 Releases 分支下载资源包和词库**](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases)
+
 你还能对资源包语言格式进行[**自定义**](#脚本交互)！
 
 ![资源包列表展示](./.screenshot/pic4.webp)
@@ -28,8 +32,6 @@
 遇到任何问题&错误，在 [Issues](https://github.com/NorthZeroD/minecraft-pinyin/issues) 提出哦~
 
 ## 使用
-
-[**在此处下载预生成的资源包和词库**](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases)
 
 **请确保你的操作系统上已安装 git 和 python，然后再进行下一步。**
 

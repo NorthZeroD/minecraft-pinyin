@@ -1,6 +1,6 @@
 ---
 name: "Minecraft Dictionary"
-version: "25w46a"
+version: "1.21.11"
 sort: by_weight
 ...
 金合欢木按钮	jīn hé huān mù àn niǔ
@@ -1183,7 +1183,7 @@ sort: by_weight
 大型蕨	dà xíng jué
 熔岩	róng yán
 装有熔岩的炼药锅	zhuāng yǒu róng yán de liàn yào guō
-枯叶	kū yè
+枯叶堆	kū yè duī
 讲台	jiǎng tái
 拉杆	lā gān
 光源方块	guāng yuán fāng kuài
@@ -2451,6 +2451,7 @@ sort: by_weight
 下界合金胸甲	xià jiè hé jīn xiōng jiǎ
 下界合金头盔	xià jiè hé jīn tóu kuī
 下界合金锄	xià jiè hé jīn chú
+下界合金马铠	xià jiè hé jīn mǎ kǎi
 下界合金锭	xià jiè hé jīn dìng
 下界合金护腿	xià jiè hé jīn hù tuǐ
 下界合金鹦鹉螺铠	xià jiè hé jīn yīng wǔ luó kǎi

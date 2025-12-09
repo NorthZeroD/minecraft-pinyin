@@ -1,12 +1,12 @@
 # 发行版
 
-[Rime词库 · 最新版 [25w46a]](https://github.com/NorthZeroD/minecraft-pinyin/blob/releases/latest/dict/minecraft.dict.yaml)
+[Rime词库 · 最新版 [1.21.11]](https://github.com/NorthZeroD/minecraft-pinyin/blob/releases/latest/dict/minecraft.dict.yaml)
 
-[资源包 · 最新快照版 [25w46a]](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases/latest/mcrp/snapshot/25w46a)
-
-[资源包 · 最新正式版 [1.21.10]](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases/latest/mcrp/release/1.21.10)
+[资源包 · 最新正式版 [1.21.11]](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases/latest/mcrp/release/1.21.11)
 
 [资源包 · 正式版 [1.13, 1.21.9]](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases/old/mcrp/release)
+
+[资源包 · 最新快照版 [25w46a]](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases/latest/mcrp/snapshot/25w46a)
 
 ## 资源包命名
 

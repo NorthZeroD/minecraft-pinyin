@@ -4,8 +4,6 @@
 
 [**在 Modrinth 下载资源包**](https://modrinth.com/resourcepack/minecraft-pinyin)
 
-[**在 Releases 分支下载资源包和词库**](https://github.com/NorthZeroD/minecraft-pinyin/tree/releases)
-
 你还能对资源包语言格式进行[**自定义**](#脚本交互)！
 
 ![资源包列表展示](./.screenshot/pic4.webp)

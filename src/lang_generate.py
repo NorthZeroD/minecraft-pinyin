@@ -5,6 +5,28 @@ from pypinyin import lazy_pinyin, load_phrases_dict
 from pypinyin_dict.phrase_pinyin_data import cc_cedict
 from phrases_dict import phrases_dict
 from Formatter import Formatter
+from excluded_and_included_keys import (
+    excluded_keys_startwith,
+    excluded_keys_full,
+    included_keys_startwith,
+    included_keys_full,
+)
+
+
+def should_process_key(k: str) -> bool:
+    for s in excluded_keys_startwith:
+        if k.startswith(s):
+            return False
+    for s in excluded_keys_full:
+        if k == s:
+            return False
+    for s in included_keys_startwith:
+        if k.startswith(s):
+            return True
+    for s in included_keys_full:
+        if k == s:
+            return True
+    return False
 
 
 def lang_generate(
@@ -18,12 +40,7 @@ def lang_generate(
     lc = formatter.left_converter
     rc = formatter.right_converter
     for k, v in lang_json.items():
-        if (
-            not k.startswith("item.minecraft.")
-            and not k.startswith("block.minecraft.")
-            and not k.startswith("effect.minecraft.")
-            and not k.startswith("enchantment.minecraft.")
-        ):
+        if not should_process_key(k):
             continue
         try:
             result = v

@@ -3,6 +3,7 @@
 生成 Minecraft **Rime词库**，以及汉语拼音**资源包**(1.13+)，支持全拼、各种双拼和首字母！
 
 [**在 Modrinth 下载资源包**](https://modrinth.com/resourcepack/minecraft-pinyin)
+
 [**Rime 词库**](./minecraft.dict.yaml)
 
 你还能对资源包语言格式进行[**自定义**](#脚本交互)！

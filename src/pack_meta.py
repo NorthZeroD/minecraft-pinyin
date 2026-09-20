@@ -24,14 +24,17 @@ def get_pack_meta(
     index_current = minecraft_versions.index(minecraft_version)
     # 版本小于(索引大于) 23w31a 使用 pack_meta_old
     index_23w31a = minecraft_versions.index("23w31a")
-    if index_current > index_23w31a:
-        pack_meta = pack_meta_old
-        v = rp_versions[minecraft_version]
-        pack_meta["pack"]["pack_format"] = int(float(v))
-    else:
-        pack_meta = pack_meta_new
-        v = rp_versions[minecraft_version]
-        pack_meta["pack"]["min_format"] = int(float(v))
-        pack_meta["pack"]["max_format"] = int(float(v))
+    try:
+        if index_current > index_23w31a:
+            pack_meta = pack_meta_old
+            v = rp_versions[minecraft_version]
+            pack_meta["pack"]["pack_format"] = int(float(v))
+        else:
+            pack_meta = pack_meta_new
+            v = rp_versions[minecraft_version]
+            pack_meta["pack"]["min_format"] = int(float(v))
+            pack_meta["pack"]["max_format"] = int(float(v))
+    except KeyError:
+        print(f"\t⚠️无法得知 '{minecraft_version}' 对应的资源包版本号，将以 0 填充！\n\t⚠️可以在 'src/rp_versions.py' 中添加键值对以支持版本")
     pack_meta["pack"]["description"] = description
     return pack_meta

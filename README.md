@@ -25,9 +25,6 @@
 - [X] 国标双拼
 - [X] 拼音加加
 - [X] 智能ABC
-- [ ] 粤拼(港繁)
-
-⭐积极维护中⭐
 
 遇到任何问题&错误，在 [Issues](https://github.com/NorthZeroD/minecraft-pinyin/issues) 提出哦~
 
